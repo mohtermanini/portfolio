@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Custom variant */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -112,11 +113,219 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Section background utilities */
+.section-1-body {
+  background-color: rgba(28, 96, 124, 0.7);
+}
+
+.section-1-header {
+  background-color: rgba(17, 61, 80, 0.55);
+}
+
+.section-2-body {
+  background-color: rgba(75, 75, 187, 0.7);
+}
+
+.section-2-header {
+  background-color: rgba(32, 32, 95, 0.7);
+}
+
+.section-3-body {
+  background: linear-gradient(135deg, 
+    rgba(41, 128, 185, 0.9) 0%,
+    rgba(44, 62, 80, 0.9) 100%
+  );
+  backdrop-filter: blur(8px);
+}
+
+.section-3-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(0, 255, 255, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.section-3-header {
+  background: linear-gradient(135deg,
+    rgba(52, 152, 219, 0.95) 0%,
+    rgba(44, 62, 80, 0.95) 100%
+  );
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.section-4-body {
+  background-color: rgba(106, 106, 216, 0.7);
+}
+
+.section-4-header {
+  background-color: rgba(91, 91, 165, 0.7);
+}
+
+.section-projects-header {
+  background: linear-gradient(135deg,
+    rgba(52, 152, 219, 0.95) 0%,
+    rgba(44, 62, 80, 0.95) 100%
+  );
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.section-projects-body {
+  background: linear-gradient(135deg, 
+    rgba(41, 128, 185, 0.9) 0%,
+    rgba(44, 62, 80, 0.9) 100%
+  );
+  backdrop-filter: blur(8px);
+}
+
+.section-projects-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(0, 255, 255, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float,
+.animate-attention-jump {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.animate-attention-jump:hover {
+  animation-play-state: paused;
+}
+
+@keyframes orbit {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-white scroll-smooth;
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 }
+
+.bg-neutral-900 {
+  background-color: transparent !important;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* ✨ Updated Shine Effect for .achievement-card */
+@keyframes sparkle-shine {
+  0% {
+    left: 150%;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.8;
+  }
+
+  45% {
+    left: -150%;
+    opacity: 0.8;
+  }
+
+  50% {
+    left: -150%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes initial-delay {
+  0%, 100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.achievement-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 150%;
+  width: 20%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skew(45deg);
+  animation: sparkle-shine 4s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(8px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
