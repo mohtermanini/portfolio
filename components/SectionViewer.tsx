@@ -1,11 +1,11 @@
 "use client";
 
-import WorkExperience from "@/components/sections/WorkExperience";
-import Projects from "@/components/sections/Projects";
-import Skills from "@/components/sections/Skills";
-import Algorithmic from "@/components/sections/Algorithmic";
-import Brief from "@/components/sections/Brief";
+import WorkExperience from "./sections/WorkExperience/WorkExperience";
+import Projects from "./sections/Projects/Projects";
+import Skills from "@/components/sections/Skills/Skills";
+import Algorithmic from "@/components/sections/Algorithmic/Algorithmic";
 import { JSX } from "react";
+import Brief from "./sections/Brief/Brief";
 
 export type SectionKey = "work" | "projects" | "skills" | "algorithmic" | "brief";
 

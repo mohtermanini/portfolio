@@ -114,14 +114,6 @@
 }
 
 /* Section background utilities */
-.section-1-body {
-  background-color: rgba(28, 96, 124, 0.7);
-}
-
-.section-1-header {
-  background-color: rgba(17, 61, 80, 0.55);
-}
-
 .section-2-body {
   background-color: rgba(75, 75, 187, 0.7);
 }
@@ -235,7 +227,7 @@
 
   body {
     @apply bg-black text-white scroll-smooth;
-    background-image: url('/background.jpg');
+    background-image: url('/portfolio/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -267,33 +259,6 @@
 .animate-gradient-x {
   background-size: 200% 200%;
   animation: gradient-x 3s ease infinite;
-}
-
-/* ✨ Updated Shine Effect for .achievement-card */
-@keyframes sparkle-shine {
-  0% {
-    left: 150%;
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 0.8;
-  }
-
-  45% {
-    left: -150%;
-    opacity: 0.8;
-  }
-
-  50% {
-    left: -150%;
-    opacity: 0;
-  }
-
-  100% {
-    left: 150%;
-    opacity: 0;
-  }
 }
 
 @keyframes initial-delay {

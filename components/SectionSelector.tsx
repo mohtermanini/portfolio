@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { User, Briefcase, Folder, Star, Sparkles, Brain } from "lucide-react";
+import { User, Briefcase, Star, Sparkles, Brain } from "lucide-react";
 
 const timelineItems = [
   { id: "work", label: "Work", icon: Briefcase },
@@ -11,12 +11,21 @@ const timelineItems = [
 
 export default function SectionSelector({ onSelect }: { onSelect: (id: string) => void }) {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [selected, setSelected] = useState<string>("brief");
   const [paused, setPaused] = useState(false);
   const [angle, setAngle] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const initialSelectDone = useRef(false);
   const radius = 120;
   const center = 140;
   const speed = 0.003;
+
+  useEffect(() => {
+    if (!initialSelectDone.current) {
+      onSelect("brief");
+      initialSelectDone.current = true;
+    }
+  }, []);
 
   useEffect(() => {
     if (!paused) {
@@ -34,9 +43,14 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
     setPaused(Math.hypot(dx, dy) <= radius + 4 || hovered !== null);
   };
 
+  const handleSelect = (id: string) => {
+    setSelected(id);
+    onSelect(id);
+  };
+
   return (
     <div
-      className="relative w-[280px] h-[280px] mx-auto my-8 select-none"
+      className="relative w-[280px] h-[280px] md:w-[280px] md:h-[280px] mx-auto my-8 select-none"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         setHovered(null);
@@ -63,6 +77,7 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
           const a = angle + (2 * Math.PI * i) / timelineItems.length;
           const x = center + radius * Math.cos(a);
           const y = center + radius * Math.sin(a);
+          const isSelected = selected === item.id;
 
           return (
             <div
@@ -72,11 +87,11 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
                 top: y,
                 transform: "translate(-50%, -50%)",
                 position: "absolute",
-                zIndex: hovered === i ? 10 : undefined,
+                zIndex: hovered === i || isSelected ? 10 : undefined,
               }}
             >
               <button
-                onClick={() => onSelect(item.id)}
+                onClick={() => handleSelect(item.id)}
                 onMouseEnter={() => {
                   setHovered(i);
                   setPaused(true);
@@ -85,15 +100,27 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
                   setHovered(null);
                   setPaused(false);
                 }}
-                className={`group pointer-events-auto transition-transform ${
-                  hovered === i ? "scale-110" : "scale-100"
+                className={`group pointer-events-auto cursor-pointer transition-all duration-300 ${
+                  hovered === i ? "scale-110" : isSelected ? "scale-105" : "scale-100"
                 }`}
               >
-                <span className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-500 text-white border-4 border-white shadow-lg group-hover:scale-110 transition">
-                  <Icon size={22} />
+                <span className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full relative transition-all duration-300
+                  ${isSelected
+                    ? "bg-white text-blue-600 border-4 border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+                    : "bg-blue-500 text-white border-4 border-white shadow-md group-hover:scale-110 scale-100"
+                  }`}
+                >
+                  <Icon size={20} className="md:w-[22px] md:h-[22px]" />
+                  {isSelected && (
+                    <span className="absolute -inset-1 rounded-full border border-blue-300 blur-md opacity-70 animate-ping" />
+                  )}
                 </span>
                 <span
-                  className="absolute left-1/2 top-full mt-2 -translate-x-1/2 text-white/80 text-sm font-semibold whitespace-nowrap group-hover:opacity-100 opacity-80 transition"
+                  className={`absolute left-1/2 top-full mt-2 -translate-x-1/2 text-xs md:text-sm whitespace-nowrap transition-all duration-300 ${
+                    isSelected
+                      ? "text-white font-bold"
+                      : "text-white/80 group-hover:opacity-100 opacity-80"
+                  }`}
                 >
                   {item.label}
                 </span>
@@ -105,7 +132,7 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
 
       {/* Center Dot */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 via-blue-400 to-blue-700 shadow-2xl animate-pulse" />
+        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-tr from-blue-500 via-blue-400 to-blue-700 shadow-2xl animate-pulse" />
       </div>
     </div>
   );
