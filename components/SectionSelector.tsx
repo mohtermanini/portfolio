@@ -9,7 +9,7 @@ const timelineItems = [
   { id: "brief", label: "Brief", icon: User },
 ];
 
-export default function SectionSelector({ onSelect }: { onSelect: (id: string) => void }) {
+export default function SectionSelector({ onSelect, disableActiveHighlight = false }: { onSelect: (id: string) => void, disableActiveHighlight?: boolean }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const [selected, setSelected] = useState<string>("brief");
   const [paused, setPaused] = useState(false);
@@ -35,6 +35,13 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [paused]);
+
+  // Clear selected when highlighting is disabled (mobile section open/close)
+  useEffect(() => {
+    if (disableActiveHighlight) {
+      setSelected("");
+    }
+  }, [disableActiveHighlight]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top } = e.currentTarget.getBoundingClientRect();
@@ -77,7 +84,7 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
           const a = angle + (2 * Math.PI * i) / timelineItems.length;
           const x = center + radius * Math.cos(a);
           const y = center + radius * Math.sin(a);
-          const isSelected = selected === item.id;
+          const isSelected = !disableActiveHighlight && selected === item.id;
 
           return (
             <div
@@ -86,8 +93,7 @@ export default function SectionSelector({ onSelect }: { onSelect: (id: string) =
                 left: x,
                 top: y,
                 transform: "translate(-50%, -50%)",
-                position: "absolute",
-                zIndex: hovered === i || isSelected ? 10 : undefined,
+                position: "absolute"
               }}
             >
               <button

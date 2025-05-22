@@ -21,7 +21,7 @@ export default function Algorithmic() {
 
   return (
     <section id="algorithmic" className="w-full min-h-screen flex flex-col">
-      <SectionHeader title="Problem Solving" bg="bg-gradient-to-br from-blue-900/40 to-purple-900/40" variants={itemVariants} />
+      <SectionHeader title="Problem Solving" bg="bg-gradient-to-br from-blue-900/80 to-purple-900/80 md:from-blue-900/40 md:to-purple-900/40" variants={itemVariants} />
       <div className="w-full border-b border-white/20" />
       <div className="flex-1 flex flex-col w-full h-full p-0">
         <motion.div 
@@ -29,7 +29,7 @@ export default function Algorithmic() {
           animate={controls}
           viewport={{ once: true }}
           variants={containerVariants}
-          className="bg-gradient-to-br flex-1 from-blue-900/40 to-purple-900/20 h-full w-full flex flex-col justify-center border border-white/20 shadow-2xl p-8"
+          className="bg-gradient-to-br flex-1 from-blue-900/80 to-purple-900/60 md:from-blue-900/40 md:to-purple-900/20 h-full w-full flex flex-col justify-center border border-white/20 shadow-2xl p-8"
         >
           <div className="w-full h-full flex-1 flex flex-col gap-10">
             {cards.map((card, index) => {

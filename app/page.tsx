@@ -1,13 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionSelector from "@/components/SectionSelector";
 import SectionViewer, { SectionKey } from "@/components/SectionViewer";
 
 export default function HomePage() {
   const [selectedSection, setSelectedSection] = useState<SectionKey>("brief");
-  const [isSectionViewVisible, setIsSectionViewVisible] = useState(false);
+  const [isSectionViewVisible, setIsSectionViewVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const showNameLeft = selectedSection !== "brief";
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1280);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleSectionSelect = (id: string) => {
     setSelectedSection(id as SectionKey);
@@ -17,8 +25,8 @@ export default function HomePage() {
   return (
     <main className="flex h-screen w-screen overflow-hidden">
       {/* Left Panel - Always visible */}
-      <aside className={`w-full md:w-1/4 bg-black/30 flex flex-col items-center relative transition-all duration-300 ${
-        isSectionViewVisible ? 'md:w-1/4' : 'w-full'
+      <aside className={`w-full xl:w-1/4 bg-black/30 flex flex-col items-center relative transition-all duration-300 z-0 ${
+        isSectionViewVisible ? 'xl:w-1/4' : 'w-full'
       }`}>
         <header className="w-full flex flex-col items-center pt-10 pb-4 select-none">
           <span className="text-2xl font-bold text-white tracking-wide mb-2">Portfolio of</span>
@@ -34,13 +42,13 @@ export default function HomePage() {
           </span>
         </header>
         <div className="flex-1 flex items-center justify-center w-full">
-          <SectionSelector onSelect={handleSectionSelect} />
+          <SectionSelector onSelect={handleSectionSelect} disableActiveHighlight={isMobile && isSectionViewVisible} />
         </div>
       </aside>
 
       {/* Right Panel - Hidden on mobile unless section is selected */}
-      <section className={`flex-1 bg-neutral-900 overflow-y-auto relative transition-all duration-300 ${
-        isSectionViewVisible ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
+      <section className={`fixed xl:relative inset-0 xl:inset-auto flex-1 bg-neutral-900 overflow-y-auto transition-all duration-300 z-10 ${
+        isSectionViewVisible ? 'translate-x-0' : 'translate-x-full xl:translate-x-0'
       }`}>
         <button
           onClick={() => setIsSectionViewVisible(false)}

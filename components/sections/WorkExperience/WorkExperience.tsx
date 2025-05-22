@@ -48,66 +48,134 @@ export default function WorkExperience() {
         ${customScrollbarStyles}
       `}</style>
 
-      <SectionHeader title="Work Experience" bg="" variants={itemVariants} />
+      <SectionHeader title="Work Experience" bg="bg-gradient-to-r from-white/10 via-white/10 to-transparent" variants={itemVariants} />
       <div className="w-full border-b border-white/20" />
 
       {/* Body: Timeline and Details */}
       <div className="flex flex-col md:flex-row w-full flex-1 min-h-0">
         {/* Timeline Column */}
-        <div className="w-full md:w-1/3 lg:w-1/4 min-h-[400px] md:min-h-full py-8 px-4 md:px-8 relative">
+        <div className="w-full md:w-1/3 lg:w-1/4 min-h-0 md:min-h-full py-4 md:py-8 px-2 md:px-8 relative">
           {/* Background Elements */}
-          <div className="absolute inset-0 bg-black/50 rounded-r-3xl overflow-hidden" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent backdrop-blur-sm overflow-hidden" />
 
-          {/* Vertical Timeline Line with Animated Gradient */}
-          <div className="absolute left-[68px] top-0 bottom-0 w-0.5">
+          {/* Vertical Timeline Line with Animated Gradient - Only visible on desktop */}
+          <div className="hidden md:block absolute left-[68px] top-0 bottom-0 w-0.5">
             <div className="absolute inset-0 bg-gradient-to-b from-blue-400 via-purple-400 to-transparent animate-pulse" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent animate-[pulse_2s_ease-in-out_infinite]" />
           </div>
 
-          {companies.map((company, idx) => (
-            <div key={company.name} className="relative mb-12 last:mb-0 group">
-              {/* Timeline Dot with Animated Glow */}
-              <div className={`absolute left-[-5px] top-[-5px] w-4 h-4 rounded-full border-2 transition-all duration-300 ${selected === idx
-                ? 'bg-blue-400 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.5)] scale-110'
-                : 'bg-white/10 border-white/30 group-hover:border-blue-300/50'
-                } z-10`} />
-
-              {/* Connecting Line with Gradient */}
-              <div className="absolute left-[68px] w-16 h-0.5 bg-gradient-to-r from-blue-400/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-
+          {/* Mobile Cards Container */}
+          <div className="md:hidden flex flex-col gap-3">
+            {companies.map((company, idx) => (
               <button
-                className={`flex items-center w-full gap-4 px-4 py-3 rounded-xl transition-all duration-300 shadow-md border-2 backdrop-blur-md group-hover:translate-x-1 cursor-pointer ${selected === idx
-                  ? 'border-blue-400 bg-gradient-to-r from-blue-400/10 to-purple-400/5 shadow-[0_0_20px_rgba(96,165,250,0.2)]'
-                  : 'border-white/10 bg-white/5 hover:bg-white/10'
-                  } focus:outline-none`}
+                key={company.name}
                 onClick={() => setSelected(idx)}
+                className={`relative group transition-all duration-300 ${selected === idx
+                    ? 'scale-[1.02]'
+                    : 'hover:scale-[1.01]'
+                  }`}
                 aria-label={`Select ${company.name}`}
               >
-                <span className={`w-14 h-14 flex items-center justify-center rounded-lg transition-all duration-300 ${selected === idx
-                  ? 'bg-gradient-to-br from-blue-400/20 to-purple-400/20 border-blue-400/30'
-                  : 'bg-white/20 border-white/30 group-hover:border-blue-300/30'
-                  } border shadow-sm overflow-hidden`}>
-                  <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${company.logo}`}
-                    alt={company.name} width={48} height={48} className="object-contain" />
-                </span>
-                <div className="flex flex-col items-start min-w-0">
-                  <span className={`text-base md:text-lg font-bold transition-colors duration-300 whitespace-nowrap ${selected === idx ? 'text-blue-200' : 'text-white'
-                    } drop-shadow-lg`}>{company.name}</span>
-                  <span className="text-xs text-blue-200/80 mt-1">{company.period}</span>
+                {/* Card Background with Gradient Border */}
+                <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${selected === idx
+                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20'
+                    : 'bg-white/5'
+                  }`} />
+
+                {/* Card Content */}
+                <div className={`relative p-3 rounded-xl border-2 backdrop-blur-sm transition-all duration-300 ${selected === idx
+                    ? 'border-blue-400/50 shadow-[0_0_20px_rgba(96,165,250,0.2)]'
+                    : 'border-white/10 group-hover:border-blue-300/30'
+                  }`}>
+                  <div className="flex items-center gap-3">
+                    <span className={`w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-300 ${selected === idx
+                        ? 'bg-gradient-to-br from-blue-400/20 to-purple-400/20 border-blue-400/30'
+                        : 'bg-white/20 border-white/30 group-hover:border-blue-300/30'
+                      } border shadow-sm overflow-hidden`}>
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${company.logo}`}
+                        alt={company.name}
+                        width={32}
+                        height={32}
+                        className="object-contain w-8 h-8"
+                      />
+                    </span>
+                    <div className="flex flex-col items-start min-w-0 flex-1">
+                      <span className={`text-base font-bold transition-colors duration-300 whitespace-nowrap ${selected === idx ? 'text-blue-200' : 'text-white'
+                        } drop-shadow-lg`}>
+                        {company.name}
+                      </span>
+                      <span className="text-xs text-blue-200/80 mt-0.5">
+                        {company.period}
+                      </span>
+                    </div>
+                    {/* Selection Indicator */}
+                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selected === idx
+                        ? 'bg-blue-400 scale-100'
+                        : 'bg-white/30 scale-75 group-hover:scale-90'
+                      }`} />
+                  </div>
                 </div>
               </button>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Desktop Timeline */}
+          <div className="hidden md:block">
+            {companies.map((company, idx) => (
+              <div key={company.name} className="relative mb-12 last:mb-0 group">
+                {/* Timeline Dot with Animated Glow */}
+                <div className={`absolute left-[-5px] top-[-5px] w-4 h-4 rounded-full border-2 transition-all duration-300 ${selected === idx
+                    ? 'bg-blue-400 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.5)] scale-110'
+                    : 'bg-white/10 border-white/30 group-hover:border-blue-300/50'
+                  } z-10`} />
+
+                {/* Connecting Line with Gradient */}
+                <div className="absolute left-[68px] w-16 h-0.5 bg-gradient-to-r from-blue-400/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <button
+                  className={`flex items-center w-full gap-4 px-4 py-3 rounded-xl transition-all duration-300 shadow-md border-2 backdrop-blur-sm group-hover:translate-x-1 cursor-pointer ${selected === idx
+                      ? 'border-blue-400 bg-gradient-to-r from-blue-400/10 to-purple-400/5 shadow-[0_0_20px_rgba(96,165,250,0.2)]'
+                      : 'border-white/10 bg-white/5 hover:bg-white/10'
+                    } focus:outline-none`}
+                  onClick={() => setSelected(idx)}
+                  aria-label={`Select ${company.name}`}
+                >
+                  <span className={`w-14 h-14 flex items-center justify-center rounded-lg transition-all duration-300 ${selected === idx
+                      ? 'bg-gradient-to-br from-blue-400/20 to-purple-400/20 border-blue-400/30'
+                      : 'bg-white/20 border-white/30 group-hover:border-blue-300/30'
+                    } border shadow-sm overflow-hidden`}>
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${company.logo}`}
+                      alt={company.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </span>
+                  <div className="flex flex-col items-start min-w-0">
+                    <span className={`text-base md:text-lg font-bold transition-colors duration-300 whitespace-nowrap ${selected === idx ? 'text-blue-200' : 'text-white'
+                      } drop-shadow-lg`}>
+                      {company.name}
+                    </span>
+                    <span className="text-xs text-blue-200/80 mt-1">
+                      {company.period}
+                    </span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Details Panel */}
         <div className="flex-1 min-h-0 flex flex-col bg-transparent">
-          <div className="w-full flex-1 min-h-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md shadow-2xl border border-white/20 p-4 md:p-6 transition-all duration-500 flex flex-col relative overflow-y-auto overflow-x-hidden custom-scrollbar box-border">
-            <div className="flex items-center gap-4 mb-4 relative z-10">
-              <span className="w-14 h-14 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/20 to-purple-400/20 border border-blue-400/30 shadow-lg p-2">
+          <div className="w-full flex-1 min-h-0 bg-gradient-to-br from-white/30 via-white/20 to-transparent md:from-white/10 md:via-white/5 backdrop-blur-sm shadow-2xl border border-white/20 p-3 md:p-6 transition-all duration-500 flex flex-col relative overflow-y-auto overflow-x-hidden custom-scrollbar box-border">
+            <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4 relative z-10">
+              <span className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/20 to-purple-400/20 border border-blue-400/30 shadow-lg p-1.5 md:p-2">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${companies[selected].logo}`}
-                  alt={companies[selected].name} width={48} height={48} className="object-contain" />
+                  alt={companies[selected].name} width={32} height={32} className="object-contain w-6 h-6 md:w-8 md:h-8" />
               </span>
               <span className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">{companies[selected].displayTitle}</span>
               <span className="text-sm md:text-base text-blue-200 ml-auto">{companies[selected].period}</span>

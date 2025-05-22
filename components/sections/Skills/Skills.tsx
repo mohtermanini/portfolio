@@ -61,7 +61,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="w-full min-h-screen flex flex-col">
-      <SectionHeader title="Technical Skills" bg="bg-gradient-to-r from-blue-900/80 to-purple-700/60" variants={itemVariants} />
+      <SectionHeader title="Technical Skills" bg="bg-gradient-to-r from-blue-900/80 to-purple-700/60 md:from-blue-900/80 md:to-purple-700/60" variants={itemVariants} />
       <motion.div 
         className="w-full flex flex-col flex-1 border border-white/20 shadow-lg relative overflow-hidden"
         initial="hidden"
@@ -71,14 +71,32 @@ export default function Skills() {
       >
         {/* Glassy Background Layer */}
         <div className="absolute inset-0 flex z-0">
-          <div className="w-full h-full bg-gradient-to-r from-blue-900/70 to-purple-700/70 border-r border-white/20" />
+          <div className="w-full h-full bg-gradient-to-r from-blue-900/90 to-purple-700/90 md:from-blue-900/70 md:to-purple-700/70 border-r border-white/20" />
         </div>
         {/* Content Layer */}
         <div
           ref={bodyRef}
-          className="flex-1 w-full relative overflow-x-hidden overflow-y-auto p-4 md:p-0 z-10"
+          className="flex-1 w-full relative overflow-x-hidden overflow-y-auto z-10"
         >
-          <div className="relative w-full">
+          {/* Mobile Stack Layout */}
+          <div className="block xl:hidden flex flex-col flex-1 h-full">
+            {CARD_LABELS.map((card, i) => (
+              <SkillCard
+                key={card.label}
+                card={card}
+                position={CARD_POSITIONS[i]}
+                index={i}
+                animationStep="distributed"
+                bodySize={bodySize}
+                dotColor={dotColors[i]}
+                borderClass=""
+                skills={skills}
+                isMobile={true}
+              />
+            ))}
+          </div>
+          {/* Desktop Grid Layout */}
+          <div className="hidden xl:flex relative w-full h-full min-h-[800px] justify-center items-center">
             {CARD_LABELS.map((card, i) => (
               <SkillCard
                 key={card.label}
@@ -90,6 +108,7 @@ export default function Skills() {
                 dotColor={dotColors[i]}
                 borderClass={plusBorders[i]}
                 skills={skills}
+                isMobile={false}
               />
             ))}
           </div>

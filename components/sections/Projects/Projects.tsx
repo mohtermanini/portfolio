@@ -91,9 +91,9 @@ export default function Projects() {
 
   return (
     <section id="projects" className="w-full min-h-screen flex flex-col">
-      <SectionHeader title="Projects" bg="bg-gradient-to-r from-blue-900/50 to-slate-800/50" variants={itemVariants} />
+      <SectionHeader title="Projects" bg="bg-gradient-to-r from-blue-900/80 to-slate-800/80 md:from-blue-900/50 md:to-slate-800/50" variants={itemVariants} />
       <motion.div 
-        className="relative bg-gradient-to-br from-blue-900/30 to-slate-800/30 border border-white/10"
+        className="relative bg-gradient-to-br from-blue-900/80 to-slate-800/80 md:from-blue-900/30 md:to-slate-800/30 border border-white/10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
