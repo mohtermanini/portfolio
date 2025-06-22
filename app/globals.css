@@ -227,7 +227,6 @@
 
   body {
     @apply bg-black text-white scroll-smooth;
-    background-image: url('/portfolio/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

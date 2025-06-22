@@ -4,34 +4,12 @@ import { companies, formatText } from './constants';
 import { itemVariants } from './animationVariants';
 import SectionHeader from '../../SectionHeader';
 
-const customScrollbarStyles = `
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(96, 165, 250, 0.5);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(96, 165, 250, 0.7);
-  }
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(96, 165, 250, 0.5) rgba(255, 255, 255, 0.1);
-  }
-`;
-
 export default function WorkExperience() {
   const [selected, setSelected] = useState(0);
 
   return (
     <section id="work-experience" className="w-full h-screen flex flex-col bg-transparent overflow-hidden">
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeIn {
           0% {
             opacity: 0;
@@ -45,10 +23,28 @@ export default function WorkExperience() {
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-out forwards;
         }
-        ${customScrollbarStyles}
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(96, 165, 250, 0.5);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(96, 165, 250, 0.7);
+        }
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(96, 165, 250, 0.5) rgba(255, 255, 255, 0.1);
+        }
       `}</style>
 
-      <SectionHeader title="Work Experience" bg="bg-gradient-to-r from-white/10 via-white/10 to-transparent" variants={itemVariants} />
+      <SectionHeader title="Work Experience" bg="bg-gradient-to-r from-white/10 via-white/10 to-transparent xl:backdrop-blur-none backdrop-blur-sm" variants={itemVariants} />
       <div className="w-full border-b border-white/20" />
 
       {/* Body: Timeline and Details */}
@@ -56,7 +52,7 @@ export default function WorkExperience() {
         {/* Timeline Column */}
         <div className="w-full md:w-1/3 lg:w-1/4 min-h-0 md:min-h-full py-4 md:py-8 px-2 md:px-8 relative">
           {/* Background Elements */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent backdrop-blur-sm overflow-hidden" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/20 to-transparent md:from-black/40 md:via-black/20 backdrop-blur-sm overflow-hidden" />
 
           {/* Vertical Timeline Line with Animated Gradient - Only visible on desktop */}
           <div className="hidden md:block absolute left-[68px] top-0 bottom-0 w-0.5">
@@ -65,30 +61,30 @@ export default function WorkExperience() {
           </div>
 
           {/* Mobile Cards Container */}
-          <div className="md:hidden flex flex-col gap-3">
+          <div className="md:hidden flex overflow-x-auto pb-2 gap-2 relative z-10 custom-scrollbar">
             {companies.map((company, idx) => (
               <button
                 key={company.name}
                 onClick={() => setSelected(idx)}
-                className={`relative group transition-all duration-300 ${selected === idx
+                className={`relative group transition-all duration-300 flex-shrink-0 cursor-pointer ${selected === idx
                     ? 'scale-[1.02]'
                     : 'hover:scale-[1.01]'
                   }`}
                 aria-label={`Select ${company.name}`}
               >
                 {/* Card Background with Gradient Border */}
-                <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${selected === idx
+                <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${selected === idx
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20'
                     : 'bg-white/5'
                   }`} />
 
                 {/* Card Content */}
-                <div className={`relative p-3 rounded-xl border-2 backdrop-blur-sm transition-all duration-300 ${selected === idx
+                <div className={`relative p-2.5 rounded-lg border-2 backdrop-blur-sm transition-all duration-300 ${selected === idx
                     ? 'border-blue-400/50 shadow-[0_0_20px_rgba(96,165,250,0.2)]'
                     : 'border-white/10 group-hover:border-blue-300/30'
                   }`}>
-                  <div className="flex items-center gap-3">
-                    <span className={`w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-300 ${selected === idx
+                  <div className="flex items-center gap-2.5">
+                    <span className={`w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-300 ${selected === idx
                         ? 'bg-gradient-to-br from-blue-400/20 to-purple-400/20 border-blue-400/30'
                         : 'bg-white/20 border-white/30 group-hover:border-blue-300/30'
                       } border shadow-sm overflow-hidden`}>
@@ -97,12 +93,11 @@ export default function WorkExperience() {
                         alt={company.name}
                         width={32}
                         height={32}
-                        className="object-contain w-8 h-8"
+                        className="object-contain w-5 h-5"
                       />
                     </span>
                     <div className="flex flex-col items-start min-w-0 flex-1">
-                      <span className={`text-base font-bold transition-colors duration-300 whitespace-nowrap ${selected === idx ? 'text-blue-200' : 'text-white'
-                        } drop-shadow-lg`}>
+                      <span className={`text-sm font-bold transition-colors duration-300 whitespace-normal break-words ${selected === idx ? 'text-blue-200' : 'text-white'} drop-shadow-lg`}>
                         {company.name}
                       </span>
                       <span className="text-xs text-blue-200/80 mt-0.5">
@@ -110,7 +105,7 @@ export default function WorkExperience() {
                       </span>
                     </div>
                     {/* Selection Indicator */}
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selected === idx
+                    <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${selected === idx
                         ? 'bg-blue-400 scale-100'
                         : 'bg-white/30 scale-75 group-hover:scale-90'
                       }`} />
@@ -121,7 +116,7 @@ export default function WorkExperience() {
           </div>
 
           {/* Desktop Timeline */}
-          <div className="hidden md:block">
+          <div className="hidden md:block relative z-10">
             {companies.map((company, idx) => (
               <div key={company.name} className="relative mb-12 last:mb-0 group">
                 {/* Timeline Dot with Animated Glow */}
@@ -154,8 +149,7 @@ export default function WorkExperience() {
                     />
                   </span>
                   <div className="flex flex-col items-start min-w-0">
-                    <span className={`text-base md:text-lg font-bold transition-colors duration-300 whitespace-nowrap ${selected === idx ? 'text-blue-200' : 'text-white'
-                      } drop-shadow-lg`}>
+                    <span className={`text-base md:text-lg font-bold transition-colors duration-300 whitespace-normal break-words ${selected === idx ? 'text-blue-200' : 'text-white'} drop-shadow-lg`}>
                       {company.name}
                     </span>
                     <span className="text-xs text-blue-200/80 mt-1">
@@ -177,8 +171,10 @@ export default function WorkExperience() {
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${companies[selected].logo}`}
                   alt={companies[selected].name} width={32} height={32} className="object-contain w-6 h-6 md:w-8 md:h-8" />
               </span>
-              <span className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">{companies[selected].displayTitle}</span>
-              <span className="text-sm md:text-base text-blue-200 ml-auto">{companies[selected].period}</span>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:flex-1">
+                <span className="text-base md:text-2xl font-bold text-white drop-shadow-lg">{companies[selected].displayTitle}</span>
+                <span className="text-xs md:text-base text-blue-200 lg:ml-auto">{companies[selected].period}</span>
+              </div>
             </div>
             <div
               key={selected}
@@ -187,10 +183,15 @@ export default function WorkExperience() {
               {companies[selected].description.map((section: { title: string, bullets: string[] }, index: number) => {
                 return (
                   <div key={index} className="mb-4">
-                    <h3 className={'text-lg md:text-xl font-bold text-blue-100 tracking-wide'}>{section.title}</h3>
-                    <ul className="mt-1 space-y-1">
+                    <h3 className={'text-base md:text-xl font-bold text-blue-100 tracking-wide'}>{section.title}</h3>
+                    <ul className="mt-3 space-y-3">
                       {section.bullets.map((bullet, i) => (
-                        <li key={i} className="pl-0 list-disc list-inside text-white/90">{formatText(bullet)}</li>
+                        <li key={i} className="relative p-2 md:p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                          <div className="flex items-start gap-2 md:gap-3">
+                            <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-white/80 flex-shrink-0 mt-1.5 md:mt-2 shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
+                            <p className="text-sm md:text-base text-white/90 leading-relaxed">{formatText(bullet)}</p>
+                          </div>
+                        </li>
                       ))}
                     </ul>
                   </div>

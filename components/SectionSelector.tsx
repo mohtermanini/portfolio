@@ -25,7 +25,7 @@ export default function SectionSelector({ onSelect, disableActiveHighlight = fal
       onSelect("brief");
       initialSelectDone.current = true;
     }
-  }, []);
+  }, [onSelect]);
 
   useEffect(() => {
     if (!paused) {
@@ -106,19 +106,19 @@ export default function SectionSelector({ onSelect, disableActiveHighlight = fal
                   setHovered(null);
                   setPaused(false);
                 }}
-                className={`group pointer-events-auto cursor-pointer transition-all duration-300 ${
-                  hovered === i ? "scale-110" : isSelected ? "scale-105" : "scale-100"
-                }`}
+                className={`group pointer-events-auto transition-all duration-300 ${
+                  hovered === i ? "md:scale-110" : isSelected ? "md:scale-105" : "md:scale-100"
+                } ${isSelected ? "cursor-default" : "cursor-pointer"}`}
               >
                 <span className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full relative transition-all duration-300
                   ${isSelected
-                    ? "bg-white text-blue-600 border-4 border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+                    ? "xl:bg-white xl:text-blue-600 xl:border-4 xl:border-blue-500 xl:shadow-[0_0_15px_rgba(59,130,246,0.6)] bg-blue-500 text-white border-4 border-white shadow-md group-hover:scale-110 scale-100"
                     : "bg-blue-500 text-white border-4 border-white shadow-md group-hover:scale-110 scale-100"
                   }`}
                 >
                   <Icon size={20} className="md:w-[22px] md:h-[22px]" />
                   {isSelected && (
-                    <span className="absolute -inset-1 rounded-full border border-blue-300 blur-md opacity-70 animate-ping" />
+                    <span className="absolute -inset-1 rounded-full border xl:border-blue-300 border-transparent blur-md opacity-70 xl:animate-ping" />
                   )}
                 </span>
                 <span

@@ -65,7 +65,24 @@ export default function Projects() {
     ? projects
     : projects.filter(project => project.tags.some(tag => selectedTags.includes(tag)));
 
-  const totalSlides = Math.ceil(filteredProjects.length / 6);
+  // Determine cards per slide based on screen size
+  const getCardsPerSlide = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 4; // mobile
+      if (window.innerWidth < 1024) return 4; // tablet
+    }
+    return 6; // desktop
+  };
+
+  const [cardsPerSlide, setCardsPerSlide] = useState(getCardsPerSlide());
+
+  React.useEffect(() => {
+    const handleResize = () => setCardsPerSlide(getCardsPerSlide());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalSlides = Math.ceil(filteredProjects.length / cardsPerSlide);
 
   function toggleTag(tag: string) {
     setIsFiltering(true);
@@ -93,7 +110,7 @@ export default function Projects() {
     <section id="projects" className="w-full min-h-screen flex flex-col">
       <SectionHeader title="Projects" bg="bg-gradient-to-r from-blue-900/80 to-slate-800/80 md:from-blue-900/50 md:to-slate-800/50" variants={itemVariants} />
       <motion.div 
-        className="relative bg-gradient-to-br from-blue-900/80 to-slate-800/80 md:from-blue-900/30 md:to-slate-800/30 border border-white/10"
+        className="relative flex-1 flex flex-col min-h-0 bg-gradient-to-br from-blue-900/80 to-slate-800/80 md:from-blue-900/30 md:to-slate-800/30 border border-white/10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -101,7 +118,7 @@ export default function Projects() {
       >
         {/* Tag Filter Bar */}
         <motion.div 
-          className="w-full px-4 md:px-8 flex flex-wrap gap-2 items-center mt-6 mb-5"
+          className="w-full px-2 sm:px-4 md:px-8 flex flex-wrap gap-1.5 sm:gap-2 items-center mt-4 sm:mt-6 mb-3 sm:mb-5"
           variants={containerVariants}
         >
           {allTags.map((tag) => (
@@ -110,7 +127,7 @@ export default function Projects() {
               variants={tagVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-3 py-1 rounded-full border text-xs font-medium transition-all duration-200 cursor-pointer
+              className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border text-[10px] sm:text-xs font-medium transition-all duration-200 cursor-pointer
                 ${selectedTags.includes(tag)
                   ? 'bg-cyan-500/20 text-cyan-200 border-cyan-400/30 backdrop-blur-md'
                   : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white backdrop-blur-sm border-white/20'}
@@ -139,16 +156,16 @@ export default function Projects() {
                 }}
                 title="Clear selected tags"
                 aria-label="Clear selected tags"
-                className="px-3 py-1 rounded-full border text-xs font-medium bg-red-500/20 text-red-200 border-red-400/30 backdrop-blur-md shadow-sm flex items-center gap-1 cursor-pointer"
+                className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border text-[10px] sm:text-xs font-medium bg-red-500/20 text-red-200 border-red-400/30 backdrop-blur-md shadow-sm flex items-center gap-1 cursor-pointer"
               >
-                <X className="w-3 h-3" />
+                <X className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                 Clear
               </motion.button>
             )}
           </AnimatePresence>
         </motion.div>
         {/* Body */}
-        <div className="relative px-4 md:px-8 pt-4 pb-8 overflow-y-hidden">
+        <div className="relative flex-1 flex flex-col min-h-0 px-2 sm:px-4 md:px-8 pt-2 sm:pt-4 pb-6 sm:pb-8 overflow-y-hidden">
           <Carousel
             ref={carouselRef}
             additionalTransfrom={0}
@@ -180,12 +197,12 @@ export default function Projects() {
               tablet: {
                 breakpoint: { max: 1024, min: 640 },
                 items: 1,
-                partialVisibilityGutter: 30
+                partialVisibilityGutter: 20
               },
               mobile: {
                 breakpoint: { max: 640, min: 0 },
                 items: 1,
-                partialVisibilityGutter: 20
+                partialVisibilityGutter: 10
               }
             }}
             showDots={false}
@@ -202,7 +219,7 @@ export default function Projects() {
               return true;
             }}
           >
-            {Array.from({ length: Math.ceil(filteredProjects.length / 6) }).map((_, slideIdx) => (
+            {Array.from({ length: Math.ceil(filteredProjects.length / cardsPerSlide) }).map((_, slideIdx) => (
               <motion.div 
                 key={slideIdx} 
                 className="w-full overflow-x-visible"
@@ -210,8 +227,14 @@ export default function Projects() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: slideIdx * 0.1 }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 max-w-screen-xl w-full p-1">
-                  {filteredProjects.slice(slideIdx * 6, slideIdx * 6 + 6).map((project, index) => (
+                <div className={
+                  cardsPerSlide === 4
+                    ? 'grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-3 sm:gap-4 max-w-screen-xl w-full p-1'
+                    : `grid 
+                        ${cardsPerSlide === 6 ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-2' : ''}
+                        gap-3 sm:gap-4 max-w-screen-xl w-full p-1`
+                }>
+                  {filteredProjects.slice(slideIdx * cardsPerSlide, slideIdx * cardsPerSlide + cardsPerSlide).map((project, index) => (
                     <motion.div
                       key={project.name}
                       initial={isFiltering ? false : { opacity: 0, y: 20 }}
@@ -226,7 +249,7 @@ export default function Projects() {
             ))}
           </Carousel>
           <motion.div 
-            className="flex justify-end mt-4 gap-2"
+            className="flex justify-end mt-3 sm:mt-4 gap-1.5 sm:gap-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -234,24 +257,24 @@ export default function Projects() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white shadow-lg transition disabled:opacity-40 disabled:cursor-not-allowed"
+              className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white shadow-lg transition disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={handlePrev}
               aria-label="Previous projects"
               disabled={currentSlide <= 0}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white shadow-lg transition disabled:opacity-40 disabled:cursor-not-allowed"
+              className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white shadow-lg transition disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={handleNext}
               aria-label="Next projects"
               disabled={currentSlide >= totalSlides - 1}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </motion.button>

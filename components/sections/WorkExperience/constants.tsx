@@ -47,7 +47,7 @@ export const descriptions = {
         'Developed a web platform **connecting modeling agencies with brands and casting directors**.',
         'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, use of **precomputed columns**, and **denormalized intermediate tables**.',
         'Implemented a **smart shuffling mechanism** to randomize paginated results per user session by generating and caching offset positions — improving performance by **40%** and fulfilling **key product requirements**.',
-        'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, and implemented **code-level caching** — resulting in a **30%** improvement in system speed.',
+        'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
         'Utilized **advanced debugging and monitoring tools** (**Laravel Telescope**, **Sentry**) — enabling real-time error tracking and faster issue resolution.',
         'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
       ]
@@ -56,8 +56,8 @@ export const descriptions = {
       title: 'Web Designer',
       bullets: [
         'Designed user interfaces using Adobe XD for a large-scale hotel and property booking website.',
-        'Created +80 user interfaces, including +50 unique layouts focused on delivering optimal UI/UX.',
-        'Built +150 reusable components — enabling faster turnaround times and ensuring consistent design elements.'
+        'Created **+80** user interfaces, including **+50** unique layouts focused on delivering optimal UI/UX.',
+        'Built **+150** reusable components — enabling faster turnaround times and ensuring consistent design elements.'
       ]
     }
   ],

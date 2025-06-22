@@ -10,28 +10,40 @@ export default function Algorithmic() {
 
   useEffect(() => {
     const sequence = async () => {
-      await controls.start("visible");
-      // Wait for cards to be in place
-      await new Promise(resolve => setTimeout(resolve, 50));
-      // Trigger the color sweep
-      await controls.start("sweep");
+      try {
+        // Add a small delay to ensure component is mounted
+        await new Promise(resolve => setTimeout(resolve, 100));
+        await controls.start("visible");
+        // Wait for cards to be in place
+        await new Promise(resolve => setTimeout(resolve, 50));
+        // Trigger the color sweep
+        await controls.start("sweep");
+      } catch (error) {
+        console.error("Animation error:", error);
+      }
     };
+
+    // Start the sequence after component mount
     sequence();
   }, [controls]);
 
   return (
     <section id="algorithmic" className="w-full min-h-screen flex flex-col">
-      <SectionHeader title="Problem Solving" bg="bg-gradient-to-br from-blue-900/80 to-purple-900/80 md:from-blue-900/40 md:to-purple-900/40" variants={itemVariants} />
+      <SectionHeader 
+        title="Problem Solving" 
+        bg="bg-gradient-to-br from-blue-900/80 to-purple-900/80 lg:from-blue-900/40 lg:to-purple-900/40 md:from-blue-900/85 md:to-purple-900/85" 
+        variants={itemVariants} 
+      />
       <div className="w-full border-b border-white/20" />
-      <div className="flex-1 flex flex-col w-full h-full p-0">
+      <div className="flex-1 flex flex-col w-full p-0">
         <motion.div 
           initial="hidden"
           animate={controls}
           viewport={{ once: true }}
           variants={containerVariants}
-          className="bg-gradient-to-br flex-1 from-blue-900/80 to-purple-900/60 md:from-blue-900/40 md:to-purple-900/20 h-full w-full flex flex-col justify-center border border-white/20 shadow-2xl p-8"
+          className="bg-gradient-to-br flex-1 from-blue-900/80 to-purple-900/60 lg:from-blue-900/40 lg:to-purple-900/20 md:from-blue-900/85 md:to-purple-900/65 h-full w-full flex flex-col justify-center border border-white/20 shadow-2xl p-8"
         >
-          <div className="w-full h-full flex-1 flex flex-col gap-10">
+          <div className="w-full h-full flex-1 flex flex-col gap-4 sm:gap-10">
             {cards.map((card, index) => {
               const CardWrapper = card.link ? motion.a : motion.div;
               const props = card.link
@@ -89,22 +101,25 @@ export default function Algorithmic() {
                       <ArrowUpRight className={`w-5 h-5 ${colorClass.split(' ')[4]}`} />
                     </div>
                   )}
-                  <div className="flex items-start gap-4 relative">
-                    <motion.div 
-                      whileHover={{ 
-                        scale: 1.08,
-                        rotate: 5,
-                        transition: { 
-                          duration: 0.2,
-                          ease: "easeOut"
-                        }
-                      }}
-                      className={`w-8 h-8 p-1.5 rounded-lg flex items-center justify-center transition-colors duration-200 ${card.iconBg} will-change-transform`}
-                    >
-                      {card.icon}
-                    </motion.div>
-                    <div>
-                      <h4 className={`text-lg font-semibold ${card.textColor} mb-2`}>{card.title}</h4>
+                  <div className="flex flex-col sm:flex-row items-start gap-4 relative">
+                    <div className="flex sm:block items-center">
+                      <motion.div 
+                        whileHover={{ 
+                          scale: 1.08,
+                          rotate: 5,
+                          transition: { 
+                            duration: 0.2,
+                            ease: "easeOut"
+                          }
+                        }}
+                        className={`w-8 h-8 p-1.5 rounded-lg flex items-center justify-center transition-colors duration-200 ${card.iconBg} will-change-transform flex-shrink-0`}
+                      >
+                        {card.icon}
+                      </motion.div>
+                      <h4 className={`sm:hidden text-base font-semibold ${card.textColor} ml-4`}>{card.title}</h4>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className={`hidden sm:block text-base sm:text-lg font-semibold ${card.textColor} mb-2`}>{card.title}</h4>
                       {card.content}
                     </div>
                   </div>
@@ -116,4 +131,4 @@ export default function Algorithmic() {
       </div>
     </section>
   );
-} 
+}
