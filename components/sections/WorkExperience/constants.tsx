@@ -21,6 +21,19 @@ export const formatText = (text: string) => {
 };
 
 export const descriptions = {
+  mediaslide: [
+    {
+      title: 'Full Stack Developer',
+      bullets: [
+        'Developed a **web platform connecting modeling agencies with brands and casting directors**.',
+        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, use of **precomputed columns**, and **denormalized intermediate tables** — significantly improving data-heavy page loads.',
+        'Implemented a **smart shuffling mechanism** to randomize paginated results per user session — improving performance of the associated API by **40%** and fulfilling **key product requirements**.',
+        'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
+        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry**) — enabling real-time error tracking, faster issue resolution, and reduced downtime.',
+        'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
+      ]
+    }
+  ],
   cheil: [
     {
       title: 'Web Developer',
@@ -39,17 +52,6 @@ export const descriptions = {
       title: 'Front End Developer',
       bullets: [
         'Built a responsive **real estate platform** and admin panel to support efficient property management and integrated analytics, using **React/Next.js** to deliver a modern, maintainable and scalable frontend. Collaborated with backend teams to define secure APIs and ensure seamless cross-device performance.'
-      ]
-    },
-    {
-      title: 'Back end Developer',
-      bullets: [
-        'Developed a web platform **connecting modeling agencies with brands and casting directors**.',
-        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, use of **precomputed columns**, and **denormalized intermediate tables**.',
-        'Implemented a **smart shuffling mechanism** to randomize paginated results per user session by generating and caching offset positions — improving performance by **40%** and fulfilling **key product requirements**.',
-        'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
-        'Utilized **advanced debugging and monitoring tools** (**Laravel Telescope**, **Sentry**) — enabling real-time error tracking and faster issue resolution.',
-        'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
       ]
     },
     {
@@ -72,6 +74,13 @@ export const descriptions = {
 };
 
 export const companies = [
+  {
+    name: 'Mediaslide',
+    displayTitle: 'Mediaslide',
+    period: 'Feb 2025 - Present',
+    logo: '/images/mediaslide-logo.jpeg',
+    description: descriptions.mediaslide
+  },
   {
     name: 'Cheil (Samsung)',
     displayTitle: 'Cheil Middle East & Africa under Samsung Group',
