@@ -37,8 +37,8 @@ export const projects: Project[] = [
   },
   {
     name: "Model Casting",
-    description: "Platform connecting modeling agencies, brands, and casting directors in one place.",
-    tags: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "React", "Next.js"],
+    description: "SaaS platform connecting modeling agencies, brands, and casting directors in one place.",
+    tags: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "React", "Next.js", "SaaS"],
     icon: <Users className="w-6 h-6 text-indigo-400" />,
     fun: false,
     typeBadge: typeBadges["Backend"],
