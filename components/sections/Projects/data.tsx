@@ -12,6 +12,15 @@ export const typeBadges: TypeBadges = {
 
 export const projects: Project[] = [
   {
+    name: "Castfolio",
+    description: "SaaS platform connecting modeling agencies, brands, and casting directors in one place.",
+    tags: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "React", "Next.js", "SaaS"],
+    icon: <Users className="w-6 h-6 text-indigo-400" />,
+    fun: false,
+    typeBadge: typeBadges["Backend"],
+    url: "https://castfolio.com",
+  },
+  {
     name: "Retail On Site",
     description: "Multi-country platform for Samsung retailers to manage store operations, including deployments, sales, and marketing.",
     tags: ["PHP", "Laravel", "SQL Server", "HTML", "CSS", "JavaScript", "jQuery", "Bootstrap", "SASS"],
@@ -34,14 +43,6 @@ export const projects: Project[] = [
     icon: <ClipboardList className="w-6 h-6 text-pink-400" />,
     fun: false,
     typeBadge: typeBadges["Frontend"],
-  },
-  {
-    name: "Model Casting",
-    description: "SaaS platform connecting modeling agencies, brands, and casting directors in one place.",
-    tags: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "React", "Next.js", "SaaS"],
-    icon: <Users className="w-6 h-6 text-indigo-400" />,
-    fun: false,
-    typeBadge: typeBadges["Backend"],
   },
   {
     name: "Namaa",
