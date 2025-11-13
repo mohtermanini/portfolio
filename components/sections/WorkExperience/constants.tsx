@@ -27,9 +27,9 @@ export const descriptions = {
       bullets: [
         'Developed a **web platform connecting modeling agencies with brands and casting directors**.',
         'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, use of **precomputed columns**, and **denormalized intermediate tables** — significantly improving data-heavy page loads.',
-        'Implemented a **smart shuffling mechanism** to randomize paginated results per user session — improving performance of the associated API by **40%** and fulfilling **key product requirements**.',
+        'Implemented a **smart shuffling algorithm** — boosting performance of a **key product API** by **60%** and transforming it from barely usable to highly performant and reliable. Applied caching strategies,',
         'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
-        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry**) — enabling real-time error tracking, faster issue resolution, and reduced downtime.',
+        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry** and **Google Cloud Log Explorer**) — enabling real-time error tracking, faster issue resolution, and reduced downtime.',
         'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
       ]
     }
