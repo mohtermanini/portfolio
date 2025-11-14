@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 
 // Function to convert markdown bold to HTML
 export const formatText = (text: string) => {
@@ -26,10 +26,11 @@ export const descriptions = {
       title: 'Full Stack Developer',
       bullets: [
         'Developed a **web platform connecting modeling agencies with brands and casting directors**.',
-        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, use of **precomputed columns**, and **denormalized intermediate tables** — significantly improving data-heavy page loads.',
-        'Implemented a **smart shuffling algorithm** — boosting performance of a **key product API** by **60%** and transforming it from barely usable to highly performant and reliable. Applied caching strategies,',
+        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, **precomputed columns**, and **denormalized intermediate tables** — significantly improving data-heavy page loads.',
+        'Implemented a **smart shuffling algorithm** — boosting the performance of a **key product API** by **60%** and transforming it from barely usable to highly performant and reliable.',
         'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
         'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry** and **Google Cloud Log Explorer**) — enabling real-time error tracking, faster issue resolution, and reduced downtime.',
+        'Deployed the application on **Google Cloud Platform (GCP)** via Cloud Run, integrating Cloud SQL, Cloud Storage, and VPC networking — delivering a **secure**, **scalable infrastructure** capable of handling **thousands of users** with high reliability and uptime.',
         'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
       ]
     }
@@ -57,7 +58,7 @@ export const descriptions = {
     {
       title: 'Web Designer',
       bullets: [
-        'Designed user interfaces using Adobe XD for a large-scale hotel and property booking website.',
+        'Designed user interfaces using **Adobe XD** for a large-scale hotel and property booking website.',
         'Created **+80** user interfaces, including **+50** unique layouts focused on delivering optimal UI/UX.',
         'Built **+150** reusable components — enabling faster turnaround times and ensuring consistent design elements.'
       ]
@@ -89,17 +90,17 @@ export const companies = [
     description: descriptions.cheil
   },
   {
-    name: 'Freelancer',
-    displayTitle: 'Freelancer',
-    period: 'Jan 2021 - Jul 2023',
-    logo: '/images/freelancer.svg',
-    description: descriptions.freelancer
-  },
-  {
     name: 'Namaa',
     displayTitle: 'Namaa Charitable Development Association',
     period: 'Jan 2021 - Apr 2023',
     logo: '/images/namaa-logo.png',
     description: descriptions.namaa
+  },
+  {
+    name: 'Freelancer',
+    displayTitle: 'Freelancer',
+    period: 'Jan 2021 - Jul 2023',
+    logo: '/images/freelancer.svg',
+    description: descriptions.freelancer
   }
 ]; 
