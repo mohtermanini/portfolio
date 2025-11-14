@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 
 // Function to convert markdown bold to HTML
 export const formatText = (text: string) => {
