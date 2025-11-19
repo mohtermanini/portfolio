@@ -164,7 +164,7 @@ export default function WorkExperience() {
 
         {/* Details Panel */}
         <div className="flex-1 min-h-0 flex flex-col bg-transparent">
-          <div className="w-full flex-1 min-h-0 bg-gradient-to-br from-white/30 via-white/20 to-transparent md:from-white/10 md:via-white/5 backdrop-blur-sm shadow-2xl border border-white/20 p-3 md:p-6 transition-all duration-500 flex flex-col relative overflow-y-auto overflow-x-hidden custom-scrollbar box-border">
+          <div className="w-full flex-1 min-h-0 bg-gradient-to-br from-white/30 via-white/20 to-transparent md:from-white/10 md:via-white/5 backdrop-blur-sm shadow-2xl border border-white/20 p-3 md:p-6 pb-8 md:pb-12 lg:pb-16 transition-all duration-500 flex flex-col relative overflow-y-auto overflow-x-hidden custom-scrollbar box-border">
             <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4 relative z-10">
               <span className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/20 to-purple-400/20 border border-blue-400/30 shadow-lg p-1.5 md:p-2">
                 <Image
@@ -186,7 +186,7 @@ export default function WorkExperience() {
                     <h3 className={'text-base md:text-xl font-bold text-blue-100 tracking-wide'}>{section.title}</h3>
                     <ul className="mt-3 space-y-3">
                       {section.bullets.map((bullet, i) => (
-                        <li key={i} className="relative p-2 md:p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                        <li key={i} className={`relative p-2 md:p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group ${i === section.bullets.length - 1 ? 'mb-4 md:mb-6' : ''}`}>
                           <div className="flex items-start gap-2 md:gap-3">
                             <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-white/80 flex-shrink-0 mt-1.5 md:mt-2 shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
                             <p className="text-sm md:text-base text-white/90 leading-relaxed">{formatText(bullet)}</p>

@@ -26,12 +26,12 @@ export const descriptions = {
       title: 'Full Stack Developer',
       bullets: [
         'Developed a **web platform connecting modeling agencies with brands and casting directors**.',
-        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, **precomputed columns**, and **denormalized intermediate tables** — significantly improving data-heavy page loads.',
-        'Implemented a **smart shuffling algorithm** — boosting the performance of a **key product API** by **60%** and transforming it from barely usable to highly performant and reliable.',
-        'Applied **caching strategies**, **optimized Docker setup**, enabled **GZIP compression**, implemented **code-level caching** and integrated a **search engine** — resulting in a **30%** improvement in system speed.',
-        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry** and **Google Cloud Log Explorer**) — enabling real-time error tracking, faster issue resolution, and reduced downtime.',
-        'Deployed the application on **Google Cloud Platform (GCP)** via Cloud Run, integrating Cloud SQL, Cloud Storage, and VPC networking — delivering a **secure**, **scalable infrastructure** capable of handling **thousands of users** with high reliability and uptime.',
-        'Maintained clean code structure using the **Repository Pattern**, and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
+        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, **precomputed columns**, and **denormalized tables** — dramatically improving data-heavy page loads.',
+        'Implemented a **smart shuffling algorithm** — boosting the performance of a **key product API** by **60%**, transforming it from barely usable to highly performant and reliable.',
+        'Applied **caching and compression strategies**, **optimized Docker**, and integrated a **search engine** — boosting overall system speed by **30%**.',
+        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry**, **Google Cloud Log Explorer**) — enabling real-time error tracking and identifying and resolving user issues significantly faster.',
+        'Deployed the application on **Google Cloud Platform (GCP)** — delivering a **secure**, **scalable infrastructure** capable of handling **thousands of users** with high reliability and uptime.',
+        'Maintained a clean code structure using the **Repository Pattern** and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
       ]
     }
   ],
@@ -39,12 +39,12 @@ export const descriptions = {
     {
       title: 'Web Developer',
       bullets: [
-        'Developed a **multi-country retail management platform** for **Samsung retailers**, centralizing store operations and enabling automated reporting across regions.',
-        'Built secure, scalable **backend APIs** with **Laravel** and responsive **frontend interfaces** using **React/Next.js** and **Bootstrap**, applying **SOLID** principles, **modular architecture**, **TDD**, and **caching** strategies — reducing load times, minimizing bugs and accelerating feature delivery.',
-        'Played a key role in building a **survey platform** for **Samsung**, delivering a feature-rich admin panel with **React/Next.js**, **Redux**, **RTK Query**, and **TypeScript** — enabling faster data collection, improved data management, and streamlined reporting.',
-        'Applied **Agile** methodologies using **Jira** and daily **Scrum** meetings — helping the team identify blockers early, align priorities, and deliver key features on time.',
-        'Participated in migration of a **Laravel monolithic** to a **microservices architecture** using **ASP.NET Core** and **SQL Server**, incorporating Elasticsearch, service registry, and load balancing.',
-        '**Optimized** a **legacy website** using modern web techniques such as **caching**, **bundling**, **lazy loading** and **templating** — improving performance and load speed.'
+        'Developed a **multi-country retail management platform** for **Samsung retailers**, centralizing store operations, analytics, and automated reporting across regions.',
+        'Built secure, scalable **backend APIs** with **Laravel** and responsive **interfaces** using **React/Next.js** applying **SOLID** principles, **modular architecture**, **TDD**, and **caching** strategies — reducing load times, minimizing bugs and accelerating feature delivery.',
+        'Played a key role in building a custom **survey platform** for **Samsung**, delivering a feature-rich admin panel with **React/Next.js**, **Redux**, **RTK Query**, and **TypeScript** — enabling faster data collection, improved data management, and streamlined reporting.',
+        'Applied **Agile**, methodologies using **Jira** and daily **Scrum** meetings — helping the team identify blockers early, align priorities, and deliver key features on time.',
+        'Participated in migration of a legacy **Laravel monolithic** to a **microservices architecture** using **ASP.NET Core** and **SQL Server**, incorporating Elasticsearch, service registry, and load balancing.',
+        '**Optimized** a **legacy website** using modern web techniques such as **caching**, **bundling**, **lazy loading** — improving performance and load speed.'
       ]
     }
   ],
