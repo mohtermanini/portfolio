@@ -25,13 +25,15 @@ export const descriptions = {
     {
       title: 'Full Stack Developer',
       bullets: [
-        'Developed a **web platform connecting modeling agencies with brands and casting directors**.',
-        'Reduced API response time by over **50%** through **advanced SQL query tuning**, **efficient indexing**, **precomputed columns**, and **denormalized tables** — dramatically improving data-heavy page loads.',
-        'Implemented a **smart shuffling algorithm** — boosting the performance of a **key product API** by **60%**, transforming it from barely usable to highly performant and reliable.',
-        'Applied **caching and compression strategies**, **optimized Docker**, and integrated a **search engine** — boosting overall system speed by **30%**.',
-        'Utilized **advanced debugging and monitoring tools** (e.g., **Laravel Telescope**, **Sentry**, **Google Cloud Log Explorer**) — enabling real-time error tracking and identifying and resolving user issues significantly faster.',
-        'Deployed the application on **Google Cloud Platform (GCP)** — delivering a **secure**, **scalable infrastructure** capable of handling **thousands of users** with high reliability and uptime.',
-        'Maintained a clean code structure using the **Repository Pattern** and contributed to a **multi-tenant SaaS architecture** with data partially **synced** from **external databases**.'
+        'Led the design and development of an influencer analytics and campaign platform, integrating **Instagram and TikTok first-party APIs** to enable **real-time performance tracking and campaign analytics**.',
+        'Drove key product and architectural decisions for the platform, defining both **features and system design** based on business requirements.',
+        'Architected a **multi-tenant, multi-region** system supporting globally distributed clients, improving **scalability, data isolation, and reliability** across regions.',
+        'Built and evolved a platform connecting casting directors, agencies, and talents, supporting casting workflows including **talent discovery, job board publishing,** and **collaboration between agencies and casting directors**.',
+        'Designed and implemented **distributed data synchronization** across external systems, ensuring **consistent** and **reliable data** across multiple databases and services.',
+        'Designed and maintained **cloud-native infrastructure** on **Google Cloud Platform**, leveraging **Cloud Run**, **VPC networks**, and **load balancers** to deliver **secure**, **scalable**, and **highly reliable services** supporting thousands of users.',
+        'Improved system performance through **advanced SQL query tuning**, **optimized indexing**, and **caching strategies**, reducing **API response times** by over **50%** and significantly improving **data-heavy operations**.',
+        'Implemented a **custom efficient shuffling algorithm**, improving a **key product API** by **60%**, transforming it from barely usable into a **highly performant** and **reliable endpoint**, and enabling **scalable handling** of large datasets.',
+        'Introduced **observability** and **debugging practices** (e.g., **Laravel Telescope**, **Sentry**, **Google Cloud Log Explorer**), enabling **real-time error tracking** and significantly **faster issue resolution**.'
       ]
     }
   ],
@@ -39,12 +41,12 @@ export const descriptions = {
     {
       title: 'Web Developer',
       bullets: [
-        'Developed a **multi-country retail management platform** for **Samsung retailers**, centralizing store operations, analytics, and automated reporting across regions.',
-        'Built secure, scalable **backend APIs** with **Laravel** and responsive **interfaces** using **React/Next.js** applying **SOLID** principles, **modular architecture**, **TDD**, and **caching** strategies — reducing load times, minimizing bugs and accelerating feature delivery.',
-        'Played a key role in building a custom **survey platform** for **Samsung**, delivering a feature-rich admin panel with **React/Next.js**, **Redux**, **RTK Query**, and **TypeScript** — enabling faster data collection, improved data management, and streamlined reporting.',
-        'Applied **Agile**, methodologies using **Jira** and daily **Scrum** meetings — helping the team identify blockers early, align priorities, and deliver key features on time.',
-        'Participated in migration of a legacy **Laravel monolithic** to a **microservices architecture** using **ASP.NET Core** and **SQL Server**, incorporating Elasticsearch, service registry, and load balancing.',
-        '**Optimized** a **legacy website** using modern web techniques such as **caching**, **bundling**, **lazy loading** — improving performance and load speed.'
+        'Contributed to the development of a **multi-country retail management platform** for **Samsung retailers**, centralizing **store operations**, **analytics**, and **automated reporting** across regions.',
+        'Designed and developed **secure**, **scalable backend APIs** and **responsive user interfaces** using **Laravel**, **React**, and **Next.js**, applying **SOLID principles**, **modular architecture**, and **TDD**, along with **caching strategies** to reduce load times and accelerate feature delivery.',
+        'Played a key role in building a **custom survey platform** for **Samsung**, delivering a **feature-rich admin panel** using **React**, **Next.js**, **Redux**, **RTK Query**, and **TypeScript**, improving **data collection efficiency** and **reporting workflows**.',
+        'Contributed to the migration of a legacy **Laravel monolith** to a **microservices architecture** using **ASP.NET Core** and **SQL Server**, enabling a more **scalable** and **modular system**.',
+        'Optimized **legacy web applications** using modern performance techniques such as **caching**, **bundling**, and **lazy loading**, improving **load speed** and overall performance.',
+        'Collaborated within an **Agile environment** using **Jira** and **Scrum practices**, contributing to **efficient delivery cycles** and **cross-team alignment**.'
       ]
     }
   ],
@@ -52,15 +54,13 @@ export const descriptions = {
     {
       title: 'Front End Developer',
       bullets: [
-        'Built a responsive **real estate platform** and admin panel to support efficient property management and integrated analytics, using **React/Next.js** to deliver a modern, maintainable and scalable frontend. Collaborated with backend teams to define secure APIs and ensure seamless cross-device performance.'
+        'Developed a **responsive real estate platform** and **admin panel**, enabling efficient **property management** and **integrated analytics**, and delivering a **scalable**, **maintainable frontend architecture** using **React** and **Next.js**.'
       ]
     },
     {
       title: 'Web Designer',
       bullets: [
-        'Designed user interfaces using **Adobe XD** for a large-scale hotel and property booking website.',
-        'Created **+80** user interfaces, including **+50** unique layouts focused on delivering optimal UI/UX.',
-        'Built **+150** reusable components — enabling faster turnaround times and ensuring consistent design elements.'
+        'Designed a **scalable UI system** for a **hotel and property booking platform**, creating **150+ reusable components** and **consistent design patterns** that improved **development speed** and ensured a **unified user experience**.'
       ]
     }
   ],
@@ -68,7 +68,7 @@ export const descriptions = {
     {
       title: 'Full Stack Developer',
       bullets: [
-        '**Upgraded** an **Excel-based library system** to a **full-stack web application** using **Laravel**, **MySQL**, and a responsive admin panel built with **HTML5**, **CSS3**, **SASS**, **Bootstrap**, **JavaScript** and **jQuery** — improving library operations, reducing errors and enhancing accessibility for both staff and users.'
+        'Transformed an **Excel-based library system** into a **full-stack web application**, improving **operational efficiency**, reducing **manual errors**, and streamlining **access** for staff and users.'
       ]
     }
   ]
@@ -78,7 +78,7 @@ export const companies = [
   {
     name: 'Mediaslide',
     displayTitle: 'Mediaslide',
-    period: 'Feb 2025 - Present',
+    period: 'Feb 2025 - Apr 2026',
     logo: '/images/mediaslide-logo.jpeg',
     description: descriptions.mediaslide
   },

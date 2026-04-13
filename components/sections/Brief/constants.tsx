@@ -5,12 +5,12 @@ import styles from './Brief.module.css';
 
 export const NAME = "Mohamad Termanini";
 
-export const TITLE = "Senior Software Engineer | Full Stack Developer | ex-Samsung Group";
+export const TITLE = "Senior Software Engineer | Full Stack & Distributed Systems | ex-Samsung Group";
 
 export const SUMMARY = (
   <>
-    <span className={styles.summaryStrong}>Senior Full Stack Developer</span> with <span className={styles.summaryStrong}>+5 years</span> of experience delivering scalable, high-performance applications across enterprise and startup environments.<br />
-    Proficient in <span className={styles.summaryStrong}>PHP/Laravel</span>, <span className={styles.summaryStrong}>C#/ASP.NET</span>, and <span className={styles.summaryStrong}>React/Next.js</span>, with experience working on <span className={styles.summaryStrong}>cloud-native systems</span>. Former member of <span className={styles.summaryStrong}>Samsung&apos;s Cheil MEA</span> engineering team, with a proven record of <span className={styles.summaryStrong}>improving systems performance</span>, designing <span className={styles.summaryStrong}>scalable architectures</span>, and building <span className={styles.summaryStrong}>robust, maintainable platforms</span>. Proficient in solving <span className={styles.summaryStrong}>complex technical challenges</span> and maintaining <span className={styles.summaryStrong}>high system reliability</span>.
+    <span className={styles.summaryStrong}>Senior Software Engineer</span> with <span className={styles.summaryStrong}>5+ years of experience</span> designing and building <span className={styles.summaryStrong}>scalable, high-performance web platforms</span> and <span className={styles.summaryStrong}>distributed systems</span> across <span className={styles.summaryStrong}>enterprise and startup environments</span>.<br /><br />
+    Experienced in driving <span className={styles.summaryStrong}>product and architectural decisions</span>, collaborating with <span className={styles.summaryStrong}>multiple teams</span>, and translating business requirements into reliable, <span className={styles.summaryStrong}>cloud-native solutions</span>. Strong focus on solving <span className={styles.summaryStrong}>complex technical challenges</span> and building <span className={styles.summaryStrong}>reliable, production-grade systems</span>. Previously part of <span className={styles.summaryStrong}>Samsung&apos;s Cheil MEA engineering team</span>.
   </>
 );
 

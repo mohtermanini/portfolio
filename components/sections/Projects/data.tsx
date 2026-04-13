@@ -1,5 +1,5 @@
 import React from "react";
-import { Gamepad2, Globe2, Server, BookOpen, ClipboardList, Home, Book, Utensils, Users, Monitor, Database, Paintbrush, Layers } from "lucide-react";
+import { Gamepad2, Globe2, Server, BookOpen, ClipboardList, Home, Book, Utensils, Users, Monitor, Database, Paintbrush, Layers, Sparkles } from "lucide-react";
 import { TypeBadges, Project } from "./types";
 
 export const typeBadges: TypeBadges = {
@@ -11,6 +11,14 @@ export const typeBadges: TypeBadges = {
 };
 
 export const projects: Project[] = [
+  {
+    name: "Mediaslide Influencers",
+    description: "Influencer discovery and campaign management platform enabling agencies to find creators, manage relationships, and run marketing campaigns with performance tracking and insights.",
+    tags: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "React", "Next.js", "SaaS"],
+    icon: <Sparkles className="w-6 h-6 text-indigo-400" />,
+    fun: false,
+    typeBadge: typeBadges["Backend"],
+  },
   {
     name: "Castfolio",
     description: "SaaS platform connecting modeling agencies, brands, and casting directors in one place.",
@@ -108,5 +116,5 @@ export const projects: Project[] = [
 
 // Custom tag order for filter
 export const tagOrder = [
-  "PHP", "Laravel", "C#", "ASP.NET Core", "SQL Server", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "SASS", "jQuery", "React", "Next.js", "Redux", "TypeScript", "Adobe XD", "Microservices"
+  "PHP", "Laravel", "C#", "ASP.NET Core", "SQL Server", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "SASS", "jQuery", "React", "Next.js", "Redux", "TypeScript", "Adobe XD", "Microservices", "SaaS"
 ]; 

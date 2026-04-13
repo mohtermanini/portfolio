@@ -17,7 +17,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <div className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0">
             {project.icon}
           </div>
-          <h3 className="text-base sm:text-xl font-bold text-white drop-shadow-sm break-words whitespace-normal">
+          <h3 className="text-base sm:text-md font-bold text-white drop-shadow-sm break-words whitespace-normal">
             {project.name}
           </h3>
         </div>
